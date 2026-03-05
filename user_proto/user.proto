@@ -16,17 +16,28 @@ service UserService {
     rpc UpdateRole (UpdateRoleReq) returns (UpdateRoleRes);
     rpc ProfileImage (ImageReq) returns (ImageRes);
     rpc StoreRefreshToken(StoreRefreshTokenReq) returns (StoreRefReshTokenRes);
-    rpc Refresh(RefreshReq) returns (RefreshRes);
+    rpc RefreshGet(RefreshGetReq) returns (RefreshGetRes);
+    rpc RefreshUpdate(RefreshUpdateReq) returns (RefreshUpdateRes); 
     rpc GetallUsers(GetAllUsersReq) returns (GetAllUsersRes);
 }
 
-message RefreshReq{
+message RefreshUpdateReq{
     string refresh = 1;
 }
 
-message RefreshRes{
-    string access = 1;
-    string refresh = 2;
+message RefreshUpdateRes{
+    string message = 1;
+    string refresh_token = 2;
+}
+
+message RefreshGetReq{
+    string refresh = 1;
+}
+
+message RefreshGetRes{
+    string user_id = 1;
+    string token_id = 2;
+    string token = 3;
 }
 
 message GetAllUsersReq {
