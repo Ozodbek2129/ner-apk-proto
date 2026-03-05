@@ -18,7 +18,16 @@ service UserService {
     rpc StoreRefreshToken(StoreRefreshTokenReq) returns (StoreRefReshTokenRes);
     rpc RefreshGet(RefreshGetReq) returns (RefreshGetRes);
     rpc RefreshUpdate(RefreshUpdateReq) returns (RefreshUpdateRes); 
+    rpc RefreshDelete(RefreshDeleteReq) returns (RefreshDeleteRes);
     rpc GetallUsers(GetAllUsersReq) returns (GetAllUsersRes);
+}
+
+message RefreshDeleteReq{
+    string refresh = 1;
+}
+
+message RefreshDeleteRes{
+    string message = 1;
 }
 
 message RefreshUpdateReq{
