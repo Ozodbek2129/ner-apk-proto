@@ -129,8 +129,6 @@ message RegisterReq{
     string first_name = 2;
     string last_name = 3;
     string password = 4;
-    string role = 5;
-    int64  code = 6;
 }
 
 message RegisterRes{
