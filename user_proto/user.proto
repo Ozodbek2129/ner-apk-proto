@@ -20,6 +20,15 @@ service UserService {
     rpc RefreshUpdate(RefreshUpdateReq) returns (RefreshUpdateRes); 
     rpc RefreshDelete(RefreshDeleteReq) returns (RefreshDeleteRes);
     rpc GetallUsers(GetAllUsersReq) returns (GetAllUsersRes);
+    rpc UserIdGet(UserIdGetReq) returns (UserIdGetRes);
+}
+
+message UserIdGetReq{
+    string user_id = 1;
+}
+
+message UserIdGetRes{
+    repeated Users user = 1;
 }
 
 message RefreshDeleteReq{
