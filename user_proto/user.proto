@@ -28,7 +28,7 @@ message UserIdGetReq{
 }
 
 message UserIdGetRes{
-    repeated Users user = 1;
+    repeated User user = 1;
 }
 
 message RefreshDeleteReq{
