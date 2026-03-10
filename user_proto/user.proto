@@ -41,7 +41,6 @@ message RefreshDeleteRes{
 
 message RefreshUpdateReq{
     string refresh = 1;
-    string newrefresh = 2;
 }
 
 message RefreshUpdateRes{
