@@ -176,6 +176,7 @@ message UpdatePasswordRes{
 
 message ResetPasswordReq{
     string email = 1;
+    int64 code = 2;
 }
 
 message ResetPasswordRes{
