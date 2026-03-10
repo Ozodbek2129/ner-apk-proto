@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+option go_package = "genproto/ishlab_chiqarish";
+
+package ishlab_chiqarish;
+
+service IshlabChiqarishService {
+    rpc NewContract(NewContractReq) returns (NewContractRes);
+    rpc NewContractUpdate(NewContractUpdateReq) returns (NewContractUpdateRes);
+    rpc NewContractDelete(NewContractDeleteReq) returns (NewContractDeleteRes);
+    rpc NewContractGetName(NewContractGetNameReq) returns (NewContractGetNameRes);
+    rpc NewContractGetAll(NewContractGetAllReq) returns (NewContractGetAllRes);
+}
+
+message NewContractGetAllReq {
+    int64 limit = 1;
+    int64 page = 2;
+}
+
+message NewContractGetAllRes {
+    repeated Contract contract = 1;
+}
+
+message NewContractGetNameReq {
+    string name = 1;
+}
+
+message NewContractGetNameRes {
+    string id = 1;
+    string contract_name = 2;
+    string contract_number = 3;
+    string contract_deadline = 4;
+    string contract_file_url = 5;
+    string responsible_person = 6;
+}
+
+message NewContractDeleteReq {
+    string id = 1;
+}
+
+message NewContractDeleteRes {
+    string message = 1; 
+}
+
+message NewContractUpdateReq {
+    string contract_name = 1;
+    string contract_number = 2;
+    string contract_deadline = 3;
+    string contract_file_url = 4;
+    string responsible_person = 5;
+}
+
+message NewContractUpdateRes {
+    string message = 1;
+}
+
+message NewContractReq {
+    string contract_name = 1;
+    string contract_number = 2;
+    string contract_deadline = 3;
+    string contract_file_url = 4;
+    string responsible_person = 5;
+}
+
+message NewContractRes {
+    string message = 1;
+}
+
+message Contract {
+    string id = 1;
+    string contract_name = 2;
+    string contract_number = 3;
+    string contract_deadline = 4;
+    string contract_file_url = 5;
+    string responsible_person = 6;
+    string created_at = 7;
+    string updated_at = 8;
+}
