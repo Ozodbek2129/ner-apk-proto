@@ -22,7 +22,7 @@ message NewInsideTheContractGetAllReq {
     int32 page = 2;
 }
 
-message NewInsideTheContractGetAllReq {
+message NewInsideTheContractGetAllRes {
     repeated NewInsideTheContractt all = 1; 
 }
 
