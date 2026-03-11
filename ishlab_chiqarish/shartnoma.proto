@@ -10,6 +10,56 @@ service IshlabChiqarishService {
     rpc NewContractDelete(NewContractDeleteReq) returns (NewContractDeleteRes);
     rpc NewContractGetName(NewContractGetNameReq) returns (NewContractGetNameRes);
     rpc NewContractGetAll(NewContractGetAllReq) returns (NewContractGetAllRes);
+
+    rpc NewInsideTheContract(NewInsideTheContractReq) returns (NewInsideTheContractRes);
+    rpc NewInsideTheContractUpdate(NewInsideTheContractUpdateReq) returns (NewInsideTheContractUpdateRes);
+    rpc NewInsideTheContractDelete(NewInsideTheContractDeleteReq) returns (NewInsideTheContractDeleteRes);
+    rpc NewInsideTheContractGetAll(NewInsideTheContractGetAllReq) returns (NewInsideTheContractGetAllRes);
+}
+
+message NewInsideTheContractGetAllReq {
+    int32 limit = 1;
+    int32 page = 2;
+}
+
+message NewInsideTheContractGetAllReq {
+    repeated NewInsideTheContractt all = 1; 
+}
+
+message NewInsideTheContractt {
+    string id = 1;
+    string name = 2;
+    string price = 3;
+    string created_at = 4;
+    string updated_at = 5;
+}
+
+message NewInsideTheContractDeleteReq {
+    string id = 1;
+}
+
+message NewInsideTheContractDeleteRes {
+    string message = 1;
+}
+
+message NewInsideTheContractUpdateReq {
+    string name = 1;
+    string price = 2;
+    string created_at = 3;
+    string updated_at = 4;
+}
+
+message NewInsideTheContractUpdateRes {
+    string message = 1;
+}
+
+message NewInsideTheContractReq {
+    string name = 1;
+    string price = 2;
+}
+
+message NewInsideTheContractRes {
+    string message = 1;
 }
 
 message NewContractGetAllReq {
