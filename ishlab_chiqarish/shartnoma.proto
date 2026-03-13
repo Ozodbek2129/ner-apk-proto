@@ -93,11 +93,12 @@ message NewContractDeleteRes {
 }
 
 message NewContractUpdateReq {
-    string contract_name = 1;
-    string contract_number = 2;
-    string contract_deadline = 3;
-    string contract_file_url = 4;
-    string responsible_person = 5;
+    string id = 1;
+    string contract_name = 2;
+    string contract_number = 3;
+    string contract_deadline = 4;
+    string contract_file_url = 5;
+    string responsible_person = 6;
 }
 
 message NewContractUpdateRes {
