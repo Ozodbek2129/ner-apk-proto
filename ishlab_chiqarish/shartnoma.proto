@@ -28,10 +28,11 @@ message NewInsideTheContractGetAllRes {
 
 message NewInsideTheContractt {
     string id = 1;
-    string name = 2;
-    string price = 3;
-    string created_at = 4;
-    string updated_at = 5;
+    string contract_id = 2;
+    string name = 3;
+    string price = 4;
+    string created_at = 5;
+    string updated_at = 6;
 }
 
 message NewInsideTheContractDeleteReq {
