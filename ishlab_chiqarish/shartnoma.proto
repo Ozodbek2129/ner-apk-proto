@@ -48,6 +48,7 @@ message NewInsideTheContractUpdateReq {
     string name = 2;
     string price = 3;
     string id = 4;
+    string situation = 5;
 }
 
 message NewInsideTheContractUpdateRes {
