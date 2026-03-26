@@ -20,13 +20,186 @@ service ServicesService {
     rpc DeleteUserE(DeleteUserEReq) returns (DeleteUserERes);
     rpc GetAllUserE(GetAllUserEReq) returns (GetAllUserERes);
 
-    rpc CreateRecycling(CreateRecyclingReq) returns (CreateRecyclingRes);
-    rpc UpdateRecycling(UpdateRecyclingReq) returns (UpdateRecyclingRes);
-    rpc DeleteRecycling(DeleteRecyclingReq) returns (DeleteRecyclingRes);
-    rpc GetRecyclingId(GetRecyclingIdReq) returns (GetRecyclingIdRes);
-    rpc GetRecyclingAll(GetRecyclingAllReq) returns (GetRecyclingAllRes);
+    rpc CreateRecyclingAttendance(CreateRecyclingAttendanceReq) returns (CreateRecyclingAttendanceRes);
+    rpc UpdateRecyclingAttendance(UpdateRecyclingAttendanceReq) returns (UpdateRecyclingAttendanceRes);
+    rpc DeleteRecyclingAttendance(DeleteRecyclingAttendanceReq) returns (DeleteRecyclingAttendanceRes);
+    rpc GetRecyclingDailyAttendance(GetRecyclingDailyAttendanceReq) returns (GetRecyclingDailyAttendanceRes);
+    rpc GetRecyclingAllAttendance(GetRecyclingAllAttendanceReq) returns (GetRecyclingAllAttendanceRes);
+
+    rpc CreateRecyclingTask(CreateRecyclingTaskReq) returns (CreateRecyclingTaskRes);
+    rpc UpdateRecyclingTask(UpdateRecyclingTaskReq) returns (UpdateRecyclingTaskRes);
+    rpc DeleteRecyclingTask(DeleteRecyclingTaskReq) returns (DeleteRecyclingTaskRes);
+    rpc GetRecyclingAllTask(GetRecyclingAllTaskReq) returns (GetRecyclingAllTaskRes);
+    rpc GetRecyclingIdTask(GetRecyclingIdTaskReq) returns (GetRecyclingIdTaskRes);
 }
 
+//Ishchilarga vazifa berishni control qilish
+message GetRecyclingIdTaskRes {
+    string id = 1;
+    string name = 2;
+    string task = 3;
+    string deadling = 4;
+    string percent = 5;
+    string start_time = 6;
+    string end_time = 7;
+}
+
+message GetRecyclingIdTaskReq {
+    string id = 1;
+    string usera_id = 2;
+}
+
+message AllTask {
+    string id = 1;
+    string name = 2;
+    string task = 3;
+    string deadling = 4;
+    string percent = 5;
+    string start_time = 6;
+    string end_time = 7;
+}
+
+message GetRecyclingAllTaskRes {
+    repeated AllTask tasks = 1;
+}
+
+message GetRecyclingAllTaskReq {
+    string usera_id = 1;
+    int64 limit = 2;
+    int64 page = 3;
+}
+
+message DeleteRecyclingTaskReq {
+    string id = 1;
+    string usera_id = 2;
+}
+
+message DeleteRecyclingTaskRes {
+    string message = 1;
+}
+
+message UpdateRecyclingTaskReq {
+    string id = 1;
+    string usera_id = 2;
+    string percent = 3;
+    string end_time = 4;
+    string deadling = 5;
+}
+
+message UpdateRecyclingTaskRes {
+    string message = 1;
+}
+
+message CreateRecyclingTaskReq {
+    string usera_id = 1;
+    string task = 2;
+    string deadling = 3;
+    string start_time = 4;
+    string end_time = 5;
+}
+
+message CreateRecyclingTaskRes {
+    string message = 1;
+}
+
+//Qayta ishlash  ishchilarini davomat qilish
+message GetRecyclingAllAttendanceReq {
+    string start_day = 1;
+    string end_time = 2;
+}
+
+message AllAttendance {
+    string name = 1;
+    string situation = 2;
+    string reason = 3;
+    string is_present = 4;
+    string today_date = 5;
+}
+
+message GetRecyclingDailyAttendanceReq {
+    string that_day = 1;
+}
+
+message GetRecyclingDailyAttendanceRes {
+    string message = 1;
+}
+
+message DeleteRecyclingAttendanceReq {
+    string that_day = 1;
+}
+
+message DeleteRecyclingAttendanceRes {
+    string message = 1;
+}
+
+message AttendanceItemUpdate {
+    string usera_id = 1;
+    string situation = 2;
+    string reason = 3;
+    string is_present = 4;
+    string today_date = 5;
+}
+
+message UpdateRecyclingAttendanceReq {
+    repeated AttendanceItemUpdate u = 1;
+}
+
+message UpdateRecyclingAttendanceRes {
+    string message = 1;
+}
+
+message AttendanceItem {
+    string usera_id = 1;
+    string situation = 2;
+    string reason = 3;
+    string is_present = 4;
+    string today_date = 5;
+}
+
+message CreateRecyclingAttendanceReq {
+    repeated AttendanceItem attendance = 1;
+}
+
+message CreateRecyclingAttendanceRes {
+    string message = 1;
+}
+
+// Elektrik ISHCHILARINI YARATISH
+message CreateUserEReq {
+    string name = 1;
+    string image = 2;
+}
+
+message CreateUserERes {
+    string message = 1;
+}
+
+message UpdateUserEReq {
+    string id = 1;
+    string name = 2;
+    string image = 3;
+}
+
+message UpdateUserERes {
+    string message = 1;
+}
+
+message GetAllUserEReq {
+    int64 limit = 1;
+    int64 page = 2;
+}
+
+message UsersE {
+    string id = 1;
+    string name = 2;
+    string image = 3;
+}
+
+message GetAllUserERes {
+    repeated UsersE users = 1;
+}
+
+// Programmist ISHCHILARINI YARATISH
 message CreateUserPReq {
     string name = 1;
     string image = 2;
@@ -54,7 +227,20 @@ message DeleteUserPRes {
     string message = 1;
 }
 
-message
+message GetAllUserPReq {
+    int64 limit = 1;
+    int64 page = 2;
+}
+
+message UsersP {
+    string id = 1;
+    string name = 2;
+    string image = 3;
+}
+
+message GetAllUserPRes {
+    repeated UsersP users = 1;
+}
 
 // ADMOTKA ISHCHILARINI YARATISH
 message CreateUserAReq {
