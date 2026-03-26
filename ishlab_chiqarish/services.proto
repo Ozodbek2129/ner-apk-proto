@@ -5,5 +5,96 @@ option go_package = "genproto/services";
 package services;
 
 service ServicesService {
-    
+    rpc CreateUserA(CreateUserAReq) returns (CreateUserARes);
+    rpc UpdateUserA(UpdateUserAReq) returns (UpdateUserARes);
+    rpc DeleteUserA(DeleteUserAReq) returns (DeleteUserARes);
+    rpc GetAllUserA(GetAllUserAReq) returns (GetAllUserARes);
+
+    rpc CreateUserP(CreateUserPReq) returns (CreateUserPRes);
+    rpc UpdateUserP(UpdateUserPReq) returns (UpdateUserPRes);
+    rpc DeleteUserP(DeleteUserPReq) returns (DeleteUserPRes);
+    rpc GetAllUserP(GetAllUserPReq) returns (GetAllUserPRes);
+
+    rpc CreateUserE(CreateUserEReq) returns (CreateUserERes);
+    rpc UpdateUserE(UpdateUserEReq) returns (UpdateUserERes);
+    rpc DeleteUserE(DeleteUserEReq) returns (DeleteUserERes);
+    rpc GetAllUserE(GetAllUserEReq) returns (GetAllUserERes);
+
+    rpc CreateRecycling(CreateRecyclingReq) returns (CreateRecyclingRes);
+    rpc UpdateRecycling(UpdateRecyclingReq) returns (UpdateRecyclingRes);
+    rpc DeleteRecycling(DeleteRecyclingReq) returns (DeleteRecyclingRes);
+    rpc GetRecyclingId(GetRecyclingIdReq) returns (GetRecyclingIdRes);
+    rpc GetRecyclingAll(GetRecyclingAllReq) returns (GetRecyclingAllRes);
+}
+
+message CreateUserPReq {
+    string name = 1;
+    string image = 2;
+}
+
+message CreateUserPRes {
+    string message = 1;
+}
+
+message UpdateUserPReq {
+    string id = 1;
+    string name = 2;
+    string image = 3; 
+}
+
+message UpdateUserPRes {
+    string message = 1;
+}
+
+message DeleteUserPReq {
+    string id = 1;
+}
+
+message DeleteUserPRes {
+    string message = 1;
+}
+
+message
+
+// ADMOTKA ISHCHILARINI YARATISH
+message CreateUserAReq {
+    string name = 1;
+    string image = 2;
+}
+
+message CreateUserARes {
+    string message = 1;
+}
+
+message UpdateUserAReq {
+    string id = 1;
+    string name = 2;
+    string image = 3;
+}
+
+message UpdateUserARes {
+    string message = 1;
+}
+
+message DeleteUserAReq {
+    string id = 1;
+}
+
+message DeleteUserARes {
+    string message = 1;
+}   
+
+message GetAllUserAReq {
+    int64 limit = 1;
+    int64 page = 2;
+}
+
+message UsersA {
+    string id = 1;
+    string name = 2;
+    string image = 3;
+}
+
+message GetAllUserARes {
+    repeated UsersA users = 1;
 }
