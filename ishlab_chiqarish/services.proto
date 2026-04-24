@@ -5,20 +5,10 @@ option go_package = "genproto/services";
 package services;
 
 service ServicesService {
-    rpc CreateUserA(CreateUserAReq) returns (CreateUserARes);
-    rpc UpdateUserA(UpdateUserAReq) returns (UpdateUserARes);
-    rpc DeleteUserA(DeleteUserAReq) returns (DeleteUserARes);
-    rpc GetAllUserA(GetAllUserAReq) returns (GetAllUserARes);
-
-    rpc CreateUserP(CreateUserPReq) returns (CreateUserPRes);
-    rpc UpdateUserP(UpdateUserPReq) returns (UpdateUserPRes);
-    rpc DeleteUserP(DeleteUserPReq) returns (DeleteUserPRes);
-    rpc GetAllUserP(GetAllUserPReq) returns (GetAllUserPRes);
-
-    rpc CreateUserE(CreateUserEReq) returns (CreateUserERes);
-    rpc UpdateUserE(UpdateUserEReq) returns (UpdateUserERes);
-    rpc DeleteUserE(DeleteUserEReq) returns (DeleteUserERes);
-    rpc GetAllUserE(GetAllUserEReq) returns (GetAllUserERes);
+    rpc CreateUser(CreateUserReq) returns (CreateUserRes);
+    rpc UpdateUser(UpdateUserReq) returns (UpdateUserRes);
+    rpc DeleteUser(DeleteUserReq) returns (DeleteUserRes);
+    rpc GetAllUser(GetAllUserReq) returns (GetAllUserRes);
 
     rpc CreateRecyclingAttendance(CreateRecyclingAttendanceReq) returns (CreateRecyclingAttendanceRes);
     rpc UpdateRecyclingAttendance(UpdateRecyclingAttendanceReq) returns (UpdateRecyclingAttendanceRes);
@@ -164,123 +154,45 @@ message CreateRecyclingAttendanceRes {
     string message = 1;
 }
 
-// Elektrik ISHCHILARINI YARATISH
-message CreateUserEReq {
-    string name = 1;
-    string image = 2;
-}
-
-message CreateUserERes {
-    string message = 1;
-}
-
-message UpdateUserEReq {
-    string id = 1;
-    string name = 2;
-    string image = 3;
-}
-
-message UpdateUserERes {
-    string message = 1;
-}
-
-message GetAllUserEReq {
-    int64 limit = 1;
-    int64 page = 2;
-}
-
-message UsersE {
-    string id = 1;
-    string name = 2;
-    string image = 3;
-}
-
-message GetAllUserERes {
-    repeated UsersE users = 1;
-}
-
-// Programmist ISHCHILARINI YARATISH
-message CreateUserPReq {
-    string name = 1;
-    string image = 2;
-}
-
-message CreateUserPRes {
-    string message = 1;
-}
-
-message UpdateUserPReq {
-    string id = 1;
-    string name = 2;
-    string image = 3; 
-}
-
-message UpdateUserPRes {
-    string message = 1;
-}
-
-message DeleteUserPReq {
-    string id = 1;
-}
-
-message DeleteUserPRes {
-    string message = 1;
-}
-
-message GetAllUserPReq {
-    int64 limit = 1;
-    int64 page = 2;
-}
-
-message UsersP {
-    string id = 1;
-    string name = 2;
-    string image = 3;
-}
-
-message GetAllUserPRes {
-    repeated UsersP users = 1;
-}
-
 // ADMOTKA ISHCHILARINI YARATISH
-message CreateUserAReq {
+message CreateUserReq {
     string name = 1;
     string image = 2;
 }
 
-message CreateUserARes {
+message CreateUserRes {
     string message = 1;
 }
 
-message UpdateUserAReq {
+message UpdateUserReq {
     string id = 1;
     string name = 2;
     string image = 3;
 }
 
-message UpdateUserARes {
+message UpdateUserRes {
     string message = 1;
 }
 
-message DeleteUserAReq {
+message DeleteUserReq {
     string id = 1;
 }
 
-message DeleteUserARes {
+message DeleteUserRes {
     string message = 1;
 }   
 
-message GetAllUserAReq {
+message GetAllUserReq {
     int64 limit = 1;
     int64 page = 2;
 }
 
-message UsersA {
+message Users {
     string id = 1;
     string name = 2;
     string image = 3;
 }
 
-message GetAllUserARes {
+message GetAllUserRes {
     repeated UsersA users = 1;
 }
