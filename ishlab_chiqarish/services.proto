@@ -5,6 +5,11 @@ option go_package = "genproto/services";
 package services;
 
 service ServicesService {
+    rpc CreateGroup(CreateGroupReq) returns (CreateGroupRes);
+    rpc UpdateGroup(UpdateGroupReq) returns (UpdateGroupRes);
+    rpc DeleteGroup(DeleteGroupReq) returns (DeleteGroupRes);
+    rpc GetAllGroup(GetAllGroupReq) returns (GetAllGroupRes);
+
     rpc CreateUser(CreateUserReq) returns (CreateUserRes);
     rpc UpdateUser(UpdateUserReq) returns (UpdateUserRes);
     rpc DeleteUser(DeleteUserReq) returns (DeleteUserRes);
@@ -21,6 +26,43 @@ service ServicesService {
     rpc DeleteRecyclingTask(DeleteRecyclingTaskReq) returns (DeleteRecyclingTaskRes);
     rpc GetRecyclingAllTask(GetRecyclingAllTaskReq) returns (GetRecyclingAllTaskRes);
     rpc GetRecyclingIdTask(GetRecyclingIdTaskReq) returns (GetRecyclingIdTaskRes);
+}
+
+//Create group
+message CreateGroupReq {
+    string name = 1;
+    string master = 2;
+}
+
+message CreateGroupRes{
+    string message = 1;
+}
+
+message UpdateGroupReq{
+    string id = 1;
+    string name = 2;
+    string master = 3;
+}
+
+message UpdateGroupRes{
+    string message = 1;
+}
+
+message DeleteGroupReq{
+    string id = 1;
+}
+
+message DeleteGroupRes{
+    string message = 1;
+}
+
+message GetAllGroupReq{
+    int64 limit = 1;
+    int64 page = 2;
+}
+
+message GetAllGroupRes{
+    string message = 1;
 }
 
 //Ishchilarga vazifa berishni control qilish
@@ -154,7 +196,7 @@ message CreateRecyclingAttendanceRes {
     string message = 1;
 }
 
-// ADMOTKA ISHCHILARINI YARATISH
+//ISHCHILARINI YARATISH
 message CreateUserReq {
     string name = 1;
     string image = 2;
