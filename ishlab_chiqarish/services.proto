@@ -1,209 +1,92 @@
 syntax = "proto3";
 
-option go_package = "genproto/services";
-
 package services;
 
+option go_package = "genproto/services";
+
+import "google/protobuf/timestamp.proto";
+
 service ServicesService {
+    ```
+    // GROUP
     rpc CreateGroup(CreateGroupReq) returns (CreateGroupRes);
     rpc UpdateGroup(UpdateGroupReq) returns (UpdateGroupRes);
     rpc DeleteGroup(DeleteGroupReq) returns (DeleteGroupRes);
     rpc GetAllGroup(GetAllGroupReq) returns (GetAllGroupRes);
 
-    rpc CreateUser(CreateWorkerReq) returns (CreateWorkerRes);
-    rpc UpdateUser(UpdateWorkerReq) returns (UpdateWorkerRes);
-    rpc DeleteUser(DeleteWorkerReq) returns (DeleteWorkerRes);
-    rpc GetAllUser(GetAllWorkerReq) returns (GetAllWorkerRes);
+    // WORKER
+    rpc CreateWorker(CreateWorkerReq) returns (CreateWorkerRes);
+    rpc UpdateWorker(UpdateWorkerReq) returns (UpdateWorkerRes);
+    rpc DeleteWorker(DeleteWorkerReq) returns (DeleteWorkerRes);
+    rpc GetAllWorker(GetAllWorkerReq) returns (GetAllWorkerRes);
 
-    rpc CreateRecyclingAttendance(CreateRecyclingAttendanceReq) returns (CreateRecyclingAttendanceRes);
-    rpc UpdateRecyclingAttendance(UpdateRecyclingAttendanceReq) returns (UpdateRecyclingAttendanceRes);
-    rpc DeleteRecyclingAttendance(DeleteRecyclingAttendanceReq) returns (DeleteRecyclingAttendanceRes);
-    rpc GetRecyclingDailyAttendance(GetRecyclingDailyAttendanceReq) returns (GetRecyclingDailyAttendanceRes);
-    rpc GetRecyclingAllAttendance(GetRecyclingAllAttendanceReq) returns (GetRecyclingAllAttendanceRes);
+    // ATTENDANCE
+    rpc CreateAttendance(CreateAttendanceReq) returns (CreateAttendanceRes);
+    rpc UpdateAttendance(UpdateAttendanceReq) returns (UpdateAttendanceRes);
+    rpc DeleteAttendance(DeleteAttendanceReq) returns (DeleteAttendanceRes);
+    rpc GetDailyAttendance(GetDailyAttendanceReq) returns (GetDailyAttendanceRes);
+    rpc GetAllAttendance(GetAllAttendanceReq) returns (GetAllAttendanceRes);
 
-    rpc CreateRecyclingTask(CreateRecyclingTaskReq) returns (CreateRecyclingTaskRes);
-    rpc UpdateRecyclingTask(UpdateRecyclingTaskReq) returns (UpdateRecyclingTaskRes);
-    rpc DeleteRecyclingTask(DeleteRecyclingTaskReq) returns (DeleteRecyclingTaskRes);
-    rpc GetRecyclingAllTask(GetRecyclingAllTaskReq) returns (GetRecyclingAllTaskRes);
-    rpc GetRecyclingIdTask(GetRecyclingIdTaskReq) returns (GetRecyclingIdTaskRes);
+    // TASK
+    rpc CreateTask(CreateTaskReq) returns (CreateTaskRes);
+    rpc UpdateTask(UpdateTaskReq) returns (UpdateTaskRes);
+    rpc DeleteTask(DeleteTaskReq) returns (DeleteTaskRes);
+    rpc GetAllTask(GetAllTaskReq) returns (GetAllTaskRes);
+    rpc GetTaskById(GetTaskByIdReq) returns (GetTaskByIdRes);
+    ```
 }
 
-//Create group
-message CreateGroupReq {
-    string name = 1;
-    string master = 2;
-}
-
-message CreateGroupRes{
-    string message = 1;
-}
-
-message UpdateGroupReq{
+//////////////////// GROUP ////////////////////
+message Group {
     string id = 1;
     string name = 2;
     string master = 3;
 }
 
-message UpdateGroupRes{
+message CreateGroupReq {
+    string name = 1;
+    string master = 2;
+}
+
+message CreateGroupRes {
     string message = 1;
 }
 
-message DeleteGroupReq{
+message UpdateGroupReq {
+    string id = 1;
+    string name = 2;
+    string master = 3;
+}
+
+message UpdateGroupRes {
+    string message = 1;
+}
+
+message DeleteGroupReq {
     string id = 1;
 }
 
-message DeleteGroupRes{
+message DeleteGroupRes {
     string message = 1;
 }
 
-message GetAllGroupReq{
+message GetAllGroupReq {
     int64 limit = 1;
     int64 page = 2;
+    }
+
+message GetAllGroupRes {
+    repeated Group groups = 1;
 }
 
-message GetAllGroupRes{
-    string message = 1;
-}
-
-//Ishchilarga vazifa berishni control qilish
-message GetRecyclingIdTaskRes {
+//////////////////// WORKER ////////////////////
+message Worker {
     string id = 1;
     string name = 2;
-    string task = 3;
-    string deadling = 4;
-    string percent = 5;
-    string start_time = 6;
-    string end_time = 7;
+    string image = 3;
+    string group_id = 4;
 }
 
-message GetRecyclingIdTaskReq {
-    string id = 1;
-    string usera_id = 2;
-}
-
-message AllTask {
-    string id = 1;
-    string name = 2;
-    string task = 3;
-    string deadling = 4;
-    string percent = 5;
-    string start_time = 6;
-    string end_time = 7;
-}
-
-message GetRecyclingAllTaskRes {
-    repeated AllTask tasks = 1;
-}
-
-message GetRecyclingAllTaskReq {
-    string usera_id = 1;
-    int64 limit = 2;
-    int64 page = 3;
-}
-
-message DeleteRecyclingTaskReq {
-    string id = 1;
-    string usera_id = 2;
-}
-
-message DeleteRecyclingTaskRes {
-    string message = 1;
-}
-
-message UpdateRecyclingTaskReq {
-    string id = 1;
-    string usera_id = 2;
-    string percent = 3;
-    string end_time = 4;
-    string deadling = 5;
-}
-
-message UpdateRecyclingTaskRes {
-    string message = 1;
-}
-
-message CreateRecyclingTaskReq {
-    string usera_id = 1;
-    string task = 2;
-    string deadling = 3;
-    string start_time = 4;
-    string end_time = 5;
-}
-
-message CreateRecyclingTaskRes {
-    string message = 1;
-}
-
-//Qayta ishlash  ishchilarini davomat qilish
-message GetRecyclingAllAttendanceReq {
-    string start_day = 1;
-    string end_time = 2;
-    string group_id = 3;
-}
-
-message GetRecyclingAllAttendanceRes{
-    repeated AllAttendance a = 1;
-}
-
-message AllAttendance {
-    string name = 1;
-    string situation = 2;
-    string reason = 3;
-    string is_present = 4;
-    string today_date = 5;
-}
-
-message GetRecyclingDailyAttendanceReq {
-    string that_day = 1;
-    string group_id = 2;
-}
-
-message GetRecyclingDailyAttendanceRes {
-    string message = 1;
-}
-
-message DeleteRecyclingAttendanceReq {
-    string that_day = 1;
-    string group_id = 2;
-}
-
-message DeleteRecyclingAttendanceRes {
-    string message = 1;
-}
-
-message AttendanceItemUpdate {
-    string usera_id = 1;
-    string situation = 2;
-    string reason = 3;
-    string is_present = 4;
-    string today_date = 5;
-}
-
-message UpdateRecyclingAttendanceReq {
-    repeated AttendanceItemUpdate u = 1;
-}
-
-message UpdateRecyclingAttendanceRes {
-    string message = 1;
-}
-
-message AttendanceItem {
-    string usera_id = 1;
-    string situation = 2;
-    string reason = 3;
-    string is_present = 4;
-    string today_date = 5;
-}
-
-message CreateRecyclingAttendanceReq {
-    repeated AttendanceItem attendance = 1;
-}
-
-message CreateRecyclingAttendanceRes {
-    string message = 1;
-}
-
-//ISHCHILARINI YARATISH
 message CreateWorkerReq {
     string name = 1;
     string image = 2;
@@ -231,20 +114,126 @@ message DeleteWorkerReq {
 
 message DeleteWorkerRes {
     string message = 1;
-}   
+}
 
 message GetAllWorkerReq {
     int64 limit = 1;
     int64 page = 2;
-}
-
-message Worker {
-    string id = 1;
-    string name = 2;
-    string image = 3;
-    string group_id = 4;
+    string group_id = 3;
 }
 
 message GetAllWorkerRes {
-    repeated Worker users = 1;
+    repeated Worker workers = 1;
+}
+
+//////////////////// ATTENDANCE ////////////////////
+message Attendance {
+    string worker_id = 1;
+    string situation = 2;
+    string reason = 3;
+    bool is_present = 4;
+    google.protobuf.Timestamp work_date = 5;
+}
+
+message CreateAttendanceReq {
+    repeated Attendance attendance = 1;
+}
+
+message CreateAttendanceRes {
+    string message = 1;
+}
+
+message UpdateAttendanceReq {
+    repeated Attendance attendance = 1;
+}
+
+message UpdateAttendanceRes {
+    string message = 1;
+}
+
+message DeleteAttendanceReq {
+    google.protobuf.Timestamp work_date = 1;
+    string group_id = 2;
+}
+
+message DeleteAttendanceRes {
+    string message = 1;
+}
+
+message GetDailyAttendanceReq {
+    google.protobuf.Timestamp work_date = 1;
+    string group_id = 2;
+}
+
+message GetDailyAttendanceRes {
+    repeated Attendance attendance = 1;
+}
+
+message GetAllAttendanceReq {
+    google.protobuf.Timestamp start_date = 1;
+    google.protobuf.Timestamp end_date = 2;
+    string group_id = 3;
+}
+
+message GetAllAttendanceRes {
+    repeated Attendance attendance = 1;
+}
+
+//////////////////// TASK ////////////////////
+message Task {
+    string id = 1;
+    string worker_id = 2;
+    string task = 3;
+    google.protobuf.Timestamp deadline = 4;
+    google.protobuf.Timestamp start_time = 5;
+    google.protobuf.Timestamp end_time = 6;
+}
+
+message CreateTaskReq {
+    string worker_id = 1;
+    string task = 2;
+    google.protobuf.Timestamp deadline = 3;
+    google.protobuf.Timestamp start_time = 4;
+    google.protobuf.Timestamp end_time = 5;
+}
+
+message CreateTaskRes {
+    string message = 1;
+}
+
+message UpdateTaskReq {
+    string id = 1;
+    string worker_id = 2;
+    google.protobuf.Timestamp deadline = 3;
+    google.protobuf.Timestamp end_time = 4;
+}
+
+message UpdateTaskRes {
+    string message = 1;
+}
+
+message DeleteTaskReq {
+    string id = 1;
+}
+
+message DeleteTaskRes {
+    string message = 1;
+}
+
+message GetAllTaskReq {
+    string worker_id = 1;
+    int64 limit = 2;
+    int64 page = 3;
+}
+
+message GetAllTaskRes {
+    repeated Task tasks = 1;
+}
+
+message GetTaskByIdReq {
+    string id = 1;
+}
+
+message GetTaskByIdRes {
+    Task task = 1;
 }
