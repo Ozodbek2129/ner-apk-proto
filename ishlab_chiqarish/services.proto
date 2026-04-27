@@ -10,10 +10,10 @@ service ServicesService {
     rpc DeleteGroup(DeleteGroupReq) returns (DeleteGroupRes);
     rpc GetAllGroup(GetAllGroupReq) returns (GetAllGroupRes);
 
-    rpc CreateUser(CreateUserReq) returns (CreateUserRes);
-    rpc UpdateUser(UpdateUserReq) returns (UpdateUserRes);
-    rpc DeleteUser(DeleteUserReq) returns (DeleteUserRes);
-    rpc GetAllUser(GetAllUserReq) returns (GetAllUserRes);
+    rpc CreateUser(CreateWorkerReq) returns (CreateWorkerRes);
+    rpc UpdateUser(UpdateWorkerReq) returns (UpdateWorkerRes);
+    rpc DeleteUser(DeleteWorkerReq) returns (DeleteWorkerRes);
+    rpc GetAllUser(GetAllWorkerReq) returns (GetAllWorkerRes);
 
     rpc CreateRecyclingAttendance(CreateRecyclingAttendanceReq) returns (CreateRecyclingAttendanceRes);
     rpc UpdateRecyclingAttendance(UpdateRecyclingAttendanceReq) returns (UpdateRecyclingAttendanceRes);
@@ -204,47 +204,47 @@ message CreateRecyclingAttendanceRes {
 }
 
 //ISHCHILARINI YARATISH
-message CreateUserReq {
+message CreateWorkerReq {
     string name = 1;
     string image = 2;
     string group_id = 3;
 }
 
-message CreateUserRes {
+message CreateWorkerRes {
     string message = 1;
 }
 
-message UpdateUserReq {
+message UpdateWorkerReq {
     string id = 1;
     string name = 2;
     string image = 3;
     string group_id = 4;
 }
 
-message UpdateUserRes {
+message UpdateWorkerRes {
     string message = 1;
 }
 
-message DeleteUserReq {
+message DeleteWorkerReq {
     string id = 1;
 }
 
-message DeleteUserRes {
+message DeleteWorkerRes {
     string message = 1;
 }   
 
-message GetAllUserReq {
+message GetAllWorkerReq {
     int64 limit = 1;
     int64 page = 2;
 }
 
-message Users {
+message Worker {
     string id = 1;
     string name = 2;
     string image = 3;
     string group_id = 4;
 }
 
-message GetAllUserRes {
-    repeated Users users = 1;
+message GetAllWorkerRes {
+    repeated Worker users = 1;
 }
