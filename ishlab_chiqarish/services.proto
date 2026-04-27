@@ -7,7 +7,6 @@ option go_package = "genproto/services";
 import "google/protobuf/timestamp.proto";
 
 service ServicesService {
-    ```
     // GROUP
     rpc CreateGroup(CreateGroupReq) returns (CreateGroupRes);
     rpc UpdateGroup(UpdateGroupReq) returns (UpdateGroupRes);
@@ -33,7 +32,6 @@ service ServicesService {
     rpc DeleteTask(DeleteTaskReq) returns (DeleteTaskRes);
     rpc GetAllTask(GetAllTaskReq) returns (GetAllTaskRes);
     rpc GetTaskById(GetTaskByIdReq) returns (GetTaskByIdRes);
-    ```
 }
 
 //////////////////// GROUP ////////////////////
