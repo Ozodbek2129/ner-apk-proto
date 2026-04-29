@@ -52,8 +52,8 @@ message CreateGroupRes {
 
 message UpdateGroupReq {
     string id = 1;
-    string name = 2;
-    string master = 3;
+    optional  string name = 2;
+    optional  string master = 3;
 }
 
 message UpdateGroupRes {
