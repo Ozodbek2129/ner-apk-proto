@@ -210,8 +210,8 @@ message CreateTaskRes {
 message UpdateTaskReq {
     string id = 1;
     string worker_id = 2;
-    google.protobuf.Timestamp deadline = 3;
-    google.protobuf.Timestamp end_time = 4;
+    optional google.protobuf.Timestamp deadline = 3;
+    optional google.protobuf.Timestamp end_time = 4;
 }
 
 message UpdateTaskRes {
