@@ -179,7 +179,6 @@ message GetDailyAttendanceRes {
 message GetAllAttendanceReq {
     google.protobuf.Timestamp start_date = 1;
     google.protobuf.Timestamp end_date = 2;
-    string group_id = 3;
 }
 
 message GetAllAttendanceRes {
