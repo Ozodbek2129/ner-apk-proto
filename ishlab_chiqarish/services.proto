@@ -144,9 +144,9 @@ message CreateAttendanceRes {
 message AttendanceUpdate {
     string id = 1;
     string worker_id = 2;
-    string situation = 3;
-    string reason = 4;
-    bool is_present = 5;
+    optional string situation = 3;
+    optional string reason = 4;
+    optional bool is_present = 5;
     google.protobuf.Timestamp work_date = 6;
 }
 
