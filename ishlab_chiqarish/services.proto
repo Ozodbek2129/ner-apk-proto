@@ -141,8 +141,17 @@ message CreateAttendanceRes {
     string message = 1;
 }
 
+message AttendanceUpdate {
+    string id = 1;
+    string worker_id = 2;
+    string situation = 3;
+    string reason = 4;
+    bool is_present = 5;
+    google.protobuf.Timestamp work_date = 6;
+}
+
 message UpdateAttendanceReq {
-    repeated Attendance attendance = 1;
+    repeated AttendanceUpdate attendance = 1;
 }
 
 message UpdateAttendanceRes {
