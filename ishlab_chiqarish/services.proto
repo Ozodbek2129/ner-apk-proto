@@ -160,7 +160,7 @@ message UpdateAttendanceRes {
 
 message DeleteAttendanceReq {
     google.protobuf.Timestamp work_date = 1;
-    string group_id = 2;
+    string id = 2;
 }
 
 message DeleteAttendanceRes {
