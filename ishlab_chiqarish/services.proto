@@ -126,11 +126,12 @@ message GetAllWorkerRes {
 
 //////////////////// ATTENDANCE ////////////////////
 message Attendance {
-    string worker_id = 1;
-    string situation = 2;
-    string reason = 3;
-    bool is_present = 4;
-    google.protobuf.Timestamp work_date = 5;
+    string id = 1;
+    string worker_id = 2;
+    string situation = 3;
+    string reason = 4;
+    bool is_present = 5;
+    google.protobuf.Timestamp work_date = 6;
 }
 
 message CreateAttendanceReq {
@@ -169,7 +170,6 @@ message DeleteAttendanceRes {
 
 message GetDailyAttendanceReq {
     google.protobuf.Timestamp work_date = 1;
-    string group_id = 2;
 }
 
 message GetDailyAttendanceRes {
