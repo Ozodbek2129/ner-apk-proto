@@ -96,10 +96,10 @@ message CreateWorkerRes {
 }
 
 message UpdateWorkerReq {
-    string id = 1;
-    string name = 2;
-    string image = 3;
-    string group_id = 4;
+    optional string id = 1;
+    optional string name = 2;
+    optional string image = 3;
+    optional string group_id = 4;
 }
 
 message UpdateWorkerRes {
