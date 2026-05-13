@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-option go_package = "genproto/ishlab_chiqarish";
+option go_package = "genproto/contract";
 
-package ishlab_chiqarish;
+package contract;
 
-service IshlabChiqarishService {
+service ContractService {
     rpc NewContract(NewContractReq) returns (NewContractRes);
     rpc NewContractUpdate(NewContractUpdateReq) returns (NewContractUpdateRes);
     rpc NewContractDelete(NewContractDeleteReq) returns (NewContractDeleteRes);
